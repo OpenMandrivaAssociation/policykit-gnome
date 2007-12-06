@@ -33,6 +33,7 @@ BuildRequires: gnome-doc-utils >= %{gnome_doc_utils_version}
 BuildRequires: intltool >= %{intltool_version}
 BuildRequires: gettext
 BuildRequires: desktop-file-utils
+BuildRequires: gtk-doc
 Requires: policykit >= %{polkit_version}
 Provides: %{pkgname} = %{version}-%{release}
 
