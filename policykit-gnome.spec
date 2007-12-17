@@ -21,7 +21,6 @@ License: GPLV2+
 Group: System/Libraries
 URL: http://gitweb.freedesktop.org/?p=users/david/PolicyKit-gnome.git;a=summary
 Source0: http://hal.freedesktop.org/releases/%{pkgname}-%{version}.tar.bz2
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: dbus-devel  >= %{dbus_version}
 BuildRequires: dbus-glib-devel >= %{dbus_glib_version}
 BuildRequires: dbus-glib >= %{dbus_glib_version}
