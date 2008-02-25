@@ -16,7 +16,7 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: policykit-gnome
 Version: 0.7
-Release: %mkrel 1
+Release: %mkrel 2
 License: GPLV2+
 Group: System/Libraries
 URL: http://gitweb.freedesktop.org/?p=users/david/PolicyKit-gnome.git;a=summary
@@ -58,6 +58,7 @@ Summary: Headers, libraries and API docs for PolicyKit-gnome
 Group: Development/C
 License: LGPLv2+
 Requires: %{name} >= %{version}
+Provides: %name-devel = %version-%release
 
 %description -n %{lib_name_devel}
 This package provides headers, libraries and API docs for
