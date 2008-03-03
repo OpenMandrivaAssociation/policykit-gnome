@@ -16,11 +16,17 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: policykit-gnome
 Version: 0.7
-Release: %mkrel 2
+Release: %mkrel 3
 License: GPLV2+
 Group: System/Libraries
 URL: http://gitweb.freedesktop.org/?p=users/david/PolicyKit-gnome.git;a=summary
 Source0: http://hal.freedesktop.org/releases/%{pkgname}-%{version}.tar.bz2
+# (fc) 0.7-3mdv fix crash when user has no face (GIT)
+Patch0: policykit-gnome-0.7-fixcrashnoface.patch
+# (fc) 0.7-3mdv show dialog on top of other dialogs (GIT)
+Patch1: policykit-gnome-0.7-showdialog.patch
+# (fc) 0.7-3mdv remove warnings (GIT)
+Patch2: policykit-gnome-0.7-removewarning.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: dbus-devel  >= %{dbus_version}
 BuildRequires: dbus-glib-devel >= %{dbus_glib_version}
@@ -77,6 +83,9 @@ want to have this package installed.
 
 %prep
 %setup -q -n %{pkgname}-%{version}
+%patch0 -p1 -b .fixcrashnoface
+%patch1 -p1 -b .showdialog
+%patch2 -p1 -b .removewarning
 
 %build
 %configure2_5x
@@ -86,6 +95,13 @@ want to have this package installed.
 rm -rf $RPM_BUILD_ROOT
 
 %makeinstall_std
+
+desktop-file-install --vendor="" \
+  --add-category="GNOME" \
+  --add-category="GTK" \
+  --add-category="System" \
+  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
+
 
 %find_lang %{pkgname}
 
