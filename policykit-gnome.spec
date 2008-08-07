@@ -15,8 +15,8 @@
 
 Summary: PolicyKit integration for the GNOME desktop
 Name: policykit-gnome
-Version: 0.8
-Release: %mkrel 2
+Version: 0.9
+Release: %mkrel 1
 License: GPLV2+
 Group: System/Libraries
 URL: http://gitweb.freedesktop.org/?p=users/david/PolicyKit-gnome.git;a=summary
@@ -25,6 +25,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: dbus-devel  >= %{dbus_version}
 BuildRequires: dbus-glib-devel >= %{dbus_glib_version}
 BuildRequires: dbus-glib >= %{dbus_glib_version}
+BuildRequires: libGConf2-devel
 BuildRequires: gtk2-devel >= %{gtk2_version}
 BuildRequires: gnome-vfs2-devel >= %{gnome_vfs2_version}
 BuildRequires: libsexy-devel >= %{libsexy_version}
@@ -110,11 +111,18 @@ rm -rf $RPM_BUILD_ROOT
 %postun -n %{lib_name} -p /sbin/ldconfig
 %endif
 
+%if %mdkversion < 200900
+%post
+%post_install_gconf_schemas polkit-gnome
+%endif
+
+%preun
+%preun_uninstall_gconf_schemas polkit-gnome
 
 %files -f %{pkgname}.lang
 %defattr(-,root,root,-)
 %doc README AUTHORS NEWS COPYING HACKING TODO
-
+%_sysconfdir/gconf/schemas/polkit-gnome.schemas
 %{_bindir}/polkit-gnome-authorization
 %{_libexecdir}/polkit-gnome-manager
 %{_datadir}/dbus-1/services/org.gnome.PolicyKit.service
@@ -136,4 +144,4 @@ rm -rf $RPM_BUILD_ROOT
 %files demo
 %defattr(-,root,root,-)
 %{_bindir}/polkit-gnome-example
-%{_datadir}/PolicyKit/policy/polkit-gnome-example.policy
+%_datadir/PolicyKit/policy/org.gnome.policykit.examples.policy
