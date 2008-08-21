@@ -1,10 +1,8 @@
 %define dbus_version		0.90
 %define dbus_glib_version	0.71
-%define gtk2_version		2.12
-%define gnome_vfs2_version	2.4
-%define libsexy_version		0.1.11
+%define gtk2_version		2.13.6
 %define gnome_doc_utils_version 0.3.2
-%define polkit_version		0.8
+%define polkit_version		0.9
 %define intltool_version	0.35
 
 %define pkgname PolicyKit-gnome
@@ -15,7 +13,7 @@
 
 Summary: PolicyKit integration for the GNOME desktop
 Name: policykit-gnome
-Version: 0.9
+Version: 0.9.2
 Release: %mkrel 1
 License: GPLV2+
 Group: System/Libraries
@@ -28,7 +26,6 @@ BuildRequires: dbus-glib >= %{dbus_glib_version}
 BuildRequires: libGConf2-devel
 BuildRequires: gtk2-devel >= %{gtk2_version}
 BuildRequires: gnome-vfs2-devel >= %{gnome_vfs2_version}
-BuildRequires: libsexy-devel >= %{libsexy_version}
 BuildRequires: polkit-devel >= %{polkit_version}
 BuildRequires: gnome-doc-utils >= %{gnome_doc_utils_version}
 BuildRequires: intltool >= %{intltool_version}
