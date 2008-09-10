@@ -14,11 +14,15 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: policykit-gnome
 Version: 0.9.2
-Release: %mkrel 1
+Release: %mkrel 2
 License: GPLV2+
 Group: System/Libraries
 URL: http://gitweb.freedesktop.org/?p=users/david/PolicyKit-gnome.git;a=summary
 Source0: http://hal.freedesktop.org/releases/%{pkgname}-%{version}.tar.bz2
+# (fc) 0.9.2-2mdv fix i18n init
+Patch0: PolicyKit-gnome-0.9.2-i18ninit.patch
+# (fc) 0.9.2-2mdv fix for use with non UTF8 locale
+Patch1: PolicyKit-gnome-0.9.2-nonutf8.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: dbus-devel  >= %{dbus_version}
 BuildRequires: dbus-glib-devel >= %{dbus_glib_version}
@@ -74,6 +78,8 @@ want to have this package installed.
 
 %prep
 %setup -q -n %{pkgname}-%{version}
+%patch0 -p1 -b .i18ninit
+%patch1 -p1 -b .nonutf8
 
 %build
 %configure2_5x
