@@ -14,7 +14,7 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: policykit-gnome
 Version: 0.9.2
-Release: %mkrel 3
+Release: %mkrel 4
 License: GPLV2+
 Group: System/Libraries
 URL: http://gitweb.freedesktop.org/?p=users/david/PolicyKit-gnome.git;a=summary
@@ -23,6 +23,12 @@ Source0: http://hal.freedesktop.org/releases/%{pkgname}-%{version}.tar.bz2
 Patch0: PolicyKit-gnome-0.9.2-i18ninit.patch
 # (fc) 0.9.2-2mdv fix for use with non UTF8 locale
 Patch1: PolicyKit-gnome-0.9.2-nonutf8.patch
+# (fc) 0.9.2-4mdv fix object registration (fdo bug #23297, mdv bug #50486) (Fedora)
+Patch2: PolicyKit-gnome-0.9.2-fix-manager-object-path-fdo-23297.patch
+# (fc) 0.9.2-4mdv don't spawn when running under GDM (Fedora)
+Patch3: PolicyKit-gnome-0.9.2-dont-spawn-when-running-under-gdm.patch
+# (fc) 0.9.2-4mdv fix clickable button (Fedora)
+Patch4: PolicyKit-gnome-0.9.2-fix-clickable-buttons.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: dbus-devel  >= %{dbus_version}
 BuildRequires: dbus-glib-devel >= %{dbus_glib_version}
@@ -80,6 +86,9 @@ want to have this package installed.
 %setup -q -n %{pkgname}-%{version}
 %patch0 -p1 -b .i18ninit
 %patch1 -p1 -b .nonutf8
+%patch2 -p1 -b .fix-manager-path
+%patch3 -p1 -b .no-spawning-under-gdm
+%patch4 -p1 -b .fix-clickable-buttons
 
 %build
 %configure2_5x
