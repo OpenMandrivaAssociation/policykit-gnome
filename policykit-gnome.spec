@@ -33,7 +33,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: dbus-devel  >= %{dbus_version}
 BuildRequires: dbus-glib-devel >= %{dbus_glib_version}
 BuildRequires: dbus-glib >= %{dbus_glib_version}
-BuildRequires: libGConf2-devel
+BuildRequires: libGConf2-devel GConf2
 BuildRequires: gtk2-devel >= %{gtk2_version}
 BuildRequires: polkit-devel >= %{polkit_version}
 BuildRequires: gnome-doc-utils >= %{gnome_doc_utils_version}
