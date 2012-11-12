@@ -1,0 +1,12 @@
+diff -up PolicyKit-gnome-0.9.2/polkit-gnome/polkit-gnome-auth.c.foo PolicyKit-gnome-0.9.2/polkit-gnome/polkit-gnome-auth.c
+--- PolicyKit-gnome-0.9.2/polkit-gnome/polkit-gnome-auth.c.foo	2009-08-13 18:28:06.942432221 -0500
++++ PolicyKit-gnome-0.9.2/polkit-gnome/polkit-gnome-auth.c	2009-08-13 18:28:45.469307352 -0500
+@@ -140,7 +140,7 @@ polkit_gnome_auth_obtain (PolKitAction *
+ 
+ 	polkit_gnome_proxy = dbus_g_proxy_new_for_name (session_bus,
+                                                         "org.freedesktop.PolicyKit.AuthenticationAgent", /* bus name */
+-                                                        "/",                                             /* object */
++                                                        "/org/gnome/PolicyKit/Manager",                  /* object */
+                                                         "org.freedesktop.PolicyKit.AuthenticationAgent");/* interface */
+ 
+         c = g_new0 (CallClosure, 1);
