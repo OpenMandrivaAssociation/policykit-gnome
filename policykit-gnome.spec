@@ -17,7 +17,7 @@ Version: 0.9.2
 Release: 9
 License: GPLV2+
 Group: System/Libraries
-URL: http://gitweb.freedesktop.org/?p=users/david/PolicyKit-gnome.git;a=summary
+URL: https://gitweb.freedesktop.org/?p=users/david/PolicyKit-gnome.git;a=summary
 Source0: http://hal.freedesktop.org/releases/%{pkgname}-%{version}.tar.bz2
 # (fc) 0.9.2-2mdv fix i18n init
 Patch0: PolicyKit-gnome-0.9.2-i18ninit.patch
